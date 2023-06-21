@@ -1,0 +1,316 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    olm.operatorGroup: olm-operators
+    olm.operatorNamespace: openshift-operator-lifecycle-manager
+    olm.targetNamespaces: openshift-operator-lifecycle-manager
+  creationTimestamp: "2022-01-25T12:23:53Z"
+  generation: 12310
+  labels:
+    olm.api.4bca9f23e412d79d: provided
+    olm.clusteroperator.name: operator-lifecycle-manager-packageserver
+    olm.version: 0.16.1
+  name: packageserver
+  namespace: openshift-operator-lifecycle-manager
+  resourceVersion: "7273214"
+  selfLink: /apis/operators.coreos.com/v1alpha1/namespaces/openshift-operator-lifecycle-manager/clusterserviceversions/packageserver
+  uid: aaeb20fa-fdb2-4f46-8e20-9c60098245cb
+spec:
+  apiservicedefinitions:
+    owned:
+    - containerPort: 5443
+      deploymentName: packageserver
+      description: A PackageManifest is a resource generated from existing CatalogSources
+        and their ConfigMaps
+      displayName: PackageManifest
+      group: packages.operators.coreos.com
+      kind: PackageManifest
+      name: packagemanifests
+      version: v1
+  customresourcedefinitions: {}
+  description: Represents an Operator package that is available from a given CatalogSource
+    which will resolve to a ClusterServiceVersion.
+  displayName: Package Server
+  install:
+    spec:
+      clusterPermissions:
+      - rules:
+        - apiGroups:
+          - authorization.k8s.io
+          resources:
+          - subjectaccessreviews
+          verbs:
+          - create
+          - get
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - operators.coreos.com
+          resources:
+          - catalogsources
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - packages.operators.coreos.com
+          resources:
+          - packagemanifests
+          verbs:
+          - get
+          - list
+        serviceAccountName: olm-operator-serviceaccount
+      deployments:
+      - name: packageserver
+        spec:
+          replicas: 2
+          selector:
+            matchLabels:
+              app: packageserver
+          strategy:
+            rollingUpdate:
+              maxSurge: 1
+              maxUnavailable: 1
+            type: RollingUpdate
+          template:
+            metadata:
+              creationTimestamp: null
+              labels:
+                app: packageserver
+            spec:
+              containers:
+              - command:
+                - /bin/package-server
+                - -v=4
+                - --secure-port
+                - "5443"
+                - --global-namespace
+                - openshift-marketplace
+                image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:8a315b36272d99410eb7354b3991439e6127b7d29078c576d83fe5ef71d51129
+                imagePullPolicy: IfNotPresent
+                livenessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 5443
+                    scheme: HTTPS
+                name: packageserver
+                ports:
+                - containerPort: 5443
+                  protocolumeume: TCP
+                readinessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 5443
+                    scheme: HTTPS
+                resources:
+                  requests:
+                    cpu: 10m
+                    memory: 50Mi
+                terminationMessagePolicy: FallbackToLogsOnError
+                volumeMounts:
+                - mountPath: /tmp
+                  name: tmpfs
+              nodeSelector:
+                kubernetes.io/os: linux
+                node-role.kubernetes.io/master: ""
+              priorityClassName: system-cluster-critical
+              serviceAccountName: olm-operator-serviceaccount
+              tolerations:
+              - effect: NoSchedule
+                key: node-role.kubernetes.io/master
+                operator: Exists
+              - effect: NoExecute
+                key: node.kubernetes.io/unreachable
+                operator: Exists
+                tolerationSeconds: 120
+              - effect: NoExecute
+                key: node.kubernetes.io/not-ready
+                operator: Exists
+                tolerationSeconds: 120
+              volumes:
+              - emptyDir: {}
+                name: tmpfs
+    strategy: deployment
+  installModes:
+  - supported: true
+    type: OwnNamespace
+  - supported: true
+    type: SingleNamespace
+  - supported: true
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - packagemanifests
+  - olm
+  - packages
+  links:
+  - name: Package Server
+    url: https://github.com/operator-framework/operator-lifecycle-manager/tree/master/pkg/package-server
+  maintainers:
+  - email: openshift-operators@redhat.com
+    name: Red Hat
+  maturity: alpha
+  minKubeVersion: 1.11.0
+  provider:
+    name: Red Hat
+  version: 0.16.1
+status:
+  certsLastUpdated: "2022-05-15T08:54:40Z"
+  certsRotateAt: "2024-05-13T08:54:40Z"
+  conditions:
+  - lastTransitionTime: "2022-05-15T08:39:36Z"
+    lastUpdateTime: "2022-05-15T08:39:36Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2022-05-15T08:39:36Z"
+    lastUpdateTime: "2022-05-15T08:39:37Z"
+    message: APIServices not installed
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2022-05-15T08:44:35Z"
+    lastUpdateTime: "2022-05-15T08:44:35Z"
+    message: install timeout
+    phase: Failed
+    reason: InstallCheckFailed
+  - lastTransitionTime: "2022-05-15T08:44:36Z"
+    lastUpdateTime: "2022-05-15T08:44:36Z"
+    message: APIServices not installed
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2022-05-15T08:44:36Z"
+    lastUpdateTime: "2022-05-15T08:44:36Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2022-05-15T08:44:36Z"
+    lastUpdateTime: "2022-05-15T08:44:36Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2022-05-15T08:44:36Z"
+    lastUpdateTime: "2022-05-15T08:44:37Z"
+    message: APIServices not installed
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2022-05-15T08:49:35Z"
+    lastUpdateTime: "2022-05-15T08:49:35Z"
+    message: install timeout
+    phase: Failed
+    reason: InstallCheckFailed
+  - lastTransitionTime: "2022-05-15T08:49:36Z"
+    lastUpdateTime: "2022-05-15T08:49:36Z"
+    message: APIServices not installed
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2022-05-15T08:49:36Z"
+    lastUpdateTime: "2022-05-15T08:49:36Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2022-05-15T08:49:36Z"
+    lastUpdateTime: "2022-05-15T08:49:36Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2022-05-15T08:49:36Z"
+    lastUpdateTime: "2022-05-15T08:49:38Z"
+    message: APIServices not installed
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2022-05-15T08:54:35Z"
+    lastUpdateTime: "2022-05-15T08:54:35Z"
+    message: install timeout
+    phase: Failed
+    reason: InstallCheckFailed
+  - lastTransitionTime: "2022-05-15T08:54:36Z"
+    lastUpdateTime: "2022-05-15T08:54:36Z"
+    message: APIServices not installed
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2022-05-15T08:54:37Z"
+    lastUpdateTime: "2022-05-15T08:54:37Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2022-05-15T08:54:37Z"
+    lastUpdateTime: "2022-05-15T08:54:37Z"
+    message: 'install strategy failed: Operation cannot be fulfilled on apiservices.apiregistration.k8s.io
+      "v1.packages.operators.coreos.com": the object has been modified; please apply
+      your changes to the latest version and try again'
+    phase: Failed
+    reason: InstallComponentFailed
+  - lastTransitionTime: "2022-05-15T08:54:39Z"
+    lastUpdateTime: "2022-05-15T08:54:39Z"
+    message: APIServices not installed
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2022-05-15T08:54:39Z"
+    lastUpdateTime: "2022-05-15T08:54:39Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2022-05-15T08:54:39Z"
+    lastUpdateTime: "2022-05-15T08:54:39Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2022-05-15T08:54:39Z"
+    lastUpdateTime: "2022-05-15T08:54:41Z"
+    message: APIServices not installed
+    phase: Installing
+    reason: InstallWaiting
+  lastTransitionTime: "2022-05-15T08:54:39Z"
+  lastUpdateTime: "2022-05-15T08:54:41Z"
+  message: APIServices not installed
+  phase: Installing
+  reason: InstallWaiting
+  requirementStatus:
+  - group: operators.coreos.com
+    kind: ClusterServiceVersion
+    message: CSV minKubeVersion (1.11.0) less than server version (v1.19.0+b00ba52)
+    name: packageserver
+    status: Present
+    version: v1alpha1
+  - group: apiregistration.k8s.io
+    kind: APIService
+    message: ""
+    name: v1.packages.operators.coreos.com
+    status: DeploymentFound
+    version: v1
+  - dependents:
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","get"],"apiGroups":["authorization.k8s.io"],"resources":["subjectaccessreviews"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","list","watch"],"apiGroups":[""],"resources":["configmaps"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","list","watch"],"apiGroups":["operators.coreos.com"],"resources":["catalogsources"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","list"],"apiGroups":["packages.operators.coreos.com"],"resources":["packagemanifests"]}
+      status: Satisfied
+      version: v1
+    group: ""
+    kind: ServiceAccount
+    message: ""
+    name: olm-operator-serviceaccount
+    status: Present
+    version: v1

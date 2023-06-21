@@ -1,0 +1,21 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    olm.providedAPIs: BackingStore.v1alpha1.noobaa.io,BucketClass.v1alpha1.noobaa.io,CephBlockPool.v1.ceph.rook.io,CephClient.v1.ceph.rook.io,CephCluster.v1.ceph.rook.io,CephFilesystem.v1.ceph.rook.io,CephNFS.v1.ceph.rook.io,CephObjectRealm.v1.ceph.rook.io,CephObjectStore.v1.ceph.rook.io,CephObjectStoreUser.v1.ceph.rook.io,CephObjectZone.v1.ceph.rook.io,CephObjectZoneGroup.v1.ceph.rook.io,CephRBDMirror.v1.ceph.rook.io,NooBaa.v1alpha1.noobaa.io,OCSInitialization.v1.ocs.openshift.io,ObjectBucket.v1alpha1.objectbucket.io,ObjectBucketClaim.v1alpha1.objectbucket.io,StorageCluster.v1.ocs.openshift.io
+  creationTimestamp: "2022-03-13T13:04:34Z"
+  generateName: openshift-storage-
+  generation: 1
+  name: openshift-storage-hwr4t
+  namespace: openshift-storage
+  resourceVersion: "2870417"
+  selfLink: /apis/operators.coreos.com/v1/namespaces/openshift-storage/operatorgroups/openshift-storage-hwr4t
+  uid: 1417c5b5-a506-44f5-a4ec-e70f48be3c5e
+spec:
+  targetNamespaces:
+  - openshift-storage
+status:
+  lastUpdated: "2022-03-13T13:04:34Z"
+  namespaces:
+  - openshift-storage

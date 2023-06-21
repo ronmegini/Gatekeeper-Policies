@@ -1,0 +1,696 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: Operator
+metadata:
+  creationTimestamp: "2022-03-13T13:04:34Z"
+  generation: 1
+  name: ocs-operator.openshift-storage
+  resourceVersion: "7238027"
+  selfLink: /apis/operators.coreos.com/v1/operators/ocs-operator.openshift-storage
+  uid: daaf3849-8a3f-43a8-ad05-9ff6c91ff4a8
+spec: {}
+status:
+  components:
+    labelSelector:
+      matchExpressions:
+      - key: operators.coreos.com/ocs-operator.openshift-storage
+        operator: Exists
+    refs:
+    - apiVersion: apps/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:43Z"
+        lastUpdateTime: "2022-03-13T13:07:19Z"
+        message: ReplicaSet "rook-ceph-operator-5684cdd744" has successfully progressed.
+        reason: NewReplicaSetAvailable
+        status: "True"
+        type: Progressing
+      - lastTransitionTime: "2022-05-14T20:07:32Z"
+        lastUpdateTime: "2022-05-14T20:07:32Z"
+        message: Deployment has minimum availability.
+        reason: MinimumReplicasAvailable
+        status: "True"
+        type: Available
+      kind: Deployment
+      name: rook-ceph-operator
+      namespace: openshift-storage
+    - apiVersion: apps/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:43Z"
+        lastUpdateTime: "2022-03-13T13:06:19Z"
+        message: ReplicaSet "ocs-metrics-exporter-7dc46d956d" has successfully progressed.
+        reason: NewReplicaSetAvailable
+        status: "True"
+        type: Progressing
+      - lastTransitionTime: "2022-05-14T20:08:16Z"
+        lastUpdateTime: "2022-05-14T20:08:16Z"
+        message: Deployment has minimum availability.
+        reason: MinimumReplicasAvailable
+        status: "True"
+        type: Available
+      kind: Deployment
+      name: ocs-metrics-exporter
+      namespace: openshift-storage
+    - apiVersion: apps/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:43Z"
+        lastUpdateTime: "2022-03-13T13:07:19Z"
+        message: ReplicaSet "noobaa-operator-7487d5dbc7" has successfully progressed.
+        reason: NewReplicaSetAvailable
+        status: "True"
+        type: Progressing
+      - lastTransitionTime: "2022-05-14T20:07:27Z"
+        lastUpdateTime: "2022-05-14T20:07:27Z"
+        message: Deployment has minimum availability.
+        reason: MinimumReplicasAvailable
+        status: "True"
+        type: Available
+      kind: Deployment
+      name: noobaa-operator
+      namespace: openshift-storage
+    - apiVersion: apps/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:42Z"
+        lastUpdateTime: "2022-03-13T13:07:24Z"
+        message: ReplicaSet "ocs-operator-6cf674d745" has successfully progressed.
+        reason: NewReplicaSetAvailable
+        status: "True"
+        type: Progressing
+      - lastTransitionTime: "2022-05-14T20:07:52Z"
+        lastUpdateTime: "2022-05-14T20:07:52Z"
+        message: Deployment has minimum availability.
+        reason: MinimumReplicasAvailable
+        status: "True"
+        type: Available
+      kind: Deployment
+      name: ocs-operator
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-ceph-admission-controller-role
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: ocs-operator
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-ceph-system
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-csi-cephfs-provisioner-sa
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: noobaa
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-ceph-osd
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-csi-rbd-plugin-sa
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-ceph-cmd-reporter
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-ceph-mgr
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-csi-cephfs-plugin-sa
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: ocs-metrics-exporter
+      namespace: openshift-storage
+    - apiVersion: v1
+      kind: ServiceAccount
+      name: rook-csi-rbd-provisioner-sa
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-rook-ceph-mgr-ccc677fb7
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-rook-ceph-cmd-reporter-796f5f4594
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-rook-ceph-system-84648cb4c7
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-rook-csi-cephfs-provisioner-sa-7b74578956
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-rook-ceph-osd-854bddcfd9
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-rook-csi-rbd-provisioner-sa-5485dc4498
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: Role
+      name: ocs-operator.v4.6.10-noobaa-55fdbb4677
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-noobaa-55fdbb4677
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-rook-ceph-mgr-ccc677fb7
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-rook-ceph-cmd-reporter-796f5f4594
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-rook-ceph-osd-854bddcfd9
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-rook-csi-cephfs-provisioner-sa-7b74578956
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-rook-csi-rbd-provisioner-sa-5485dc4498
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: ocs-operator.v4.6.10-rook-ceph-system-84648cb4c7
+      namespace: openshift-storage
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-6d77cd684d
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-8b84b65b9
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-6665d664b5
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-7b857d9bbd
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-5b859b955f
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-56fb989c5b
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-75f9b788ff
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-7b446c7c8c
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-8fb657db9
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-545489659d
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-5bcdd4c7bb
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-7f494c5565
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-bbccdbf4f
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-6957f8cf56
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: ocs-operator.v4.6.10-94ffd6cc5
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-5b859b955f
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-bbccdbf4f
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-7b857d9bbd
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-75f9b788ff
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-5bcdd4c7bb
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-56fb989c5b
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-8fb657db9
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-6957f8cf56
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-545489659d
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-94ffd6cc5
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-7b446c7c8c
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-6665d664b5
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-7f494c5565
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-6d77cd684d
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: ocs-operator.v4.6.10-8b84b65b9
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephobjectzonegroups.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: storageclusters.ocs.openshift.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: ocsinitializations.ocs.openshift.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephclients.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[rados].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[server].properties[annotations].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[server].properties[placement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[server].properties[resources].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[server].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephnfses.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      kind: CustomResourceDefinition
+      name: cephrbdmirrors.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: noobaas.noobaa.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephobjectstoreusers.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dataPool].properties[erasureCoded].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dataPool].properties[replicated].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dataPool].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].properties[annotations].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].properties[externalRgwEndpoints].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].properties[placement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].properties[resources].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].properties[securePort].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].properties[sslCertificateRef].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[gateway].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[healthCheck].properties[bucket].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[healthCheck].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataPool].properties[erasureCoded].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataPool].properties[replicated].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataPool].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephobjectstores.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[metadata]: Forbidden:
+          must not specify anything other than name and generateName, but metadata
+          is implicitly specified, spec.versions[0].schema.openAPIV3Schema.type: Required
+          value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      kind: CustomResourceDefinition
+      name: objectbucketclaims.objectbucket.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[erasureCoded].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[replicated].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephblockpools.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephobjectzones.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[metadata]: Forbidden:
+          must not specify anything other than name and generateName, but metadata
+          is implicitly specified, spec.versions[0].schema.openAPIV3Schema.type: Required
+          value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: objectbuckets.objectbucket.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dataPools].items.properties[erasureCoded].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dataPools].items.properties[replicated].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dataPools].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataPool].properties[erasureCoded].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataPool].properties[replicated].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataPool].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataServer].properties[annotations].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataServer].properties[placement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataServer].properties[resources].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[metadataServer].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:26Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephfilesystems.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: 'spec.versions[0].schema.openAPIV3Schema.properties[metadata]: Forbidden:
+          must not specify anything other than name and generateName, but metadata
+          is implicitly specified'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:29Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: bucketclasses.noobaa.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: '[spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[annotations].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[cephVersion].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[cleanupPolicy].properties[sanitizeDisks].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[cleanupPolicy].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[dashboard].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[disruptionManagement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[driveGroups].items.properties[placement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[driveGroups].items.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[driveGroups].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[external].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[healthCheck].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[mgr].properties[modules].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[mgr].properties[modules].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[mgr].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[mon].properties[volumeClaimTemplate].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[mon].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[monitoring].properties[externalMgrEndpoints].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[monitoring].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[network].properties[selectors].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[network].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[placement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[resources].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[config].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[disruptionManagement].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[nodes].items.properties[config].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[nodes].items.properties[devices].items.properties[config].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[nodes].items.properties[devices].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[nodes].items.properties[resources].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[nodes].items.type:
+          Required value: must not be empty for specified array items, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].properties[storageClassDeviceSets].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].properties[storage].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.properties[spec].type:
+          Required value: must not be empty for specified object fields, spec.versions[0].schema.openAPIV3Schema.type:
+          Required value: must not be empty at the root]'
+        reason: Violations
+        status: "True"
+        type: NonStructuralSchema
+      kind: CustomResourceDefinition
+      name: cephclusters.ceph.rook.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:27Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: backingstores.noobaa.io
+    - apiVersion: apiextensions.k8s.io/v1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: no conflicts found
+        reason: NoConflicts
+        status: "True"
+        type: NamesAccepted
+      - lastTransitionTime: "2022-03-13T13:05:28Z"
+        message: the initial names have been accepted
+        reason: InitialNamesAccepted
+        status: "True"
+        type: Established
+      kind: CustomResourceDefinition
+      name: cephobjectrealms.ceph.rook.io
+    - apiVersion: operators.coreos.com/v1alpha1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:04:49Z"
+        message: all available catalogsources are healthy
+        reason: AllCatalogSourcesHealthy
+        status: "False"
+        type: CatalogSourcesUnhealthy
+      - lastTransitionTime: "2022-03-22T17:34:09Z"
+        reason: RequiresApproval
+        status: "True"
+        type: InstallPlanPending
+      kind: Subscription
+      name: ocs-operator
+      namespace: openshift-storage
+    - apiVersion: operators.coreos.com/v1alpha1
+      kind: InstallPlan
+      name: install-qq2fk
+      namespace: openshift-storage
+    - apiVersion: operators.coreos.com/v1alpha1
+      conditions:
+      - lastTransitionTime: "2022-03-13T13:07:24Z"
+        lastUpdateTime: "2022-03-13T13:07:24Z"
+        message: install strategy completed with no errors
+        reason: InstallSucceeded
+        status: "True"
+        type: Succeeded
+      kind: ClusterServiceVersion
+      name: ocs-operator.v4.6.10
+      namespace: openshift-storage

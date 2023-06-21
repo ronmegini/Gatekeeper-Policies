@@ -1,0 +1,59 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    olm.providedAPIs: Alertmanager.v1.monitoring.coreos.com,PodMonitor.v1.monitoring.coreos.com,Probe.v1.monitoring.coreos.com,Prometheus.v1.monitoring.coreos.com,PrometheusRule.v1.monitoring.coreos.com,ServiceMonitor.v1.monitoring.coreos.com,ThanosRuler.v1.monitoring.coreos.com
+  creationTimestamp: "2022-01-25T12:23:43Z"
+  generation: 1
+  name: openshift-cluster-monitoring
+  namespace: openshift-monitoring
+  resourceVersion: "2872022"
+  selfLink: /apis/operators.coreos.com/v1/namespaces/openshift-monitoring/operatorgroups/openshift-cluster-monitoring
+  uid: 4ec45946-ef2c-4d1c-bfe7-3f53487f0ef1
+spec:
+  selector:
+    matchLabels:
+      openshift.io/cluster-monitoring: "true"
+  staticProvidedAPIs: true
+status:
+  lastUpdated: "2022-03-13T13:07:39Z"
+  namespaces:
+  - openshift-apiserver
+  - openshift-kube-scheduler
+  - openshift-service-ca-operator
+  - openshift-kube-storage-version-migrator
+  - openshift-sdn
+  - openshift-multus
+  - openshift-machine-api
+  - openshift-cloud-credential-operator
+  - openshift-cluster-samples-operator
+  - openshift-apiserver-operator
+  - openshift-kube-storage-version-migrator-operator
+  - openshift-storage
+  - openshift-authentication-operator
+  - openshift-user-workload-monitoring
+  - openshift-operator-lifecycle-manager
+  - openshift-controller-manager-operator
+  - openshift-ingress
+  - openshift-monitoring
+  - openshift-kube-scheduler-operator
+  - openshift-dns
+  - openshift-marketplace
+  - openshift-machine-config-operator
+  - openshift-insights
+  - openshift-console-operator
+  - openshift-authentication
+  - openshift-kube-apiserver-operator
+  - openshift-etcd-operator
+  - openshift-ingress-operator
+  - openshift-kube-controller-manager-operator
+  - openshift-config-operator
+  - openshift-image-registry
+  - openshift-controller-manager
+  - openshift-cluster-machine-approver
+  - openshift-oauth-apiserver
+  - openshift-dns-operator
+  - openshift-cluster-storage-operator
+  - openshift-kube-apiserver
+  - openshift-kube-controller-manager
+  - openshift-cluster-version

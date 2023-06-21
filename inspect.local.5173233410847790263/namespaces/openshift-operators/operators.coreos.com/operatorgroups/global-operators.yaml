@@ -1,0 +1,15 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  creationTimestamp: "2022-01-25T12:23:53Z"
+  generation: 1
+  name: global-operators
+  namespace: openshift-operators
+  resourceVersion: "7541"
+  selfLink: /apis/operators.coreos.com/v1/namespaces/openshift-operators/operatorgroups/global-operators
+  uid: bd2757da-80b2-440c-be89-3dbeba1fcc33
+status:
+  lastUpdated: "2022-01-25T12:28:31Z"
+  namespaces:
+  - ""

@@ -1,0 +1,20 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    olm.providedAPIs: PackageManifest.v1.packages.operators.coreos.com
+  creationTimestamp: "2022-01-25T12:23:53Z"
+  generation: 1
+  name: olm-operators
+  namespace: openshift-operator-lifecycle-manager
+  resourceVersion: "7271205"
+  selfLink: /apis/operators.coreos.com/v1/namespaces/openshift-operator-lifecycle-manager/operatorgroups/olm-operators
+  uid: 4f65ef36-5ad4-4b8a-a8f0-207c93cb8508
+spec:
+  targetNamespaces:
+  - openshift-operator-lifecycle-manager
+status:
+  lastUpdated: "2022-01-25T12:28:32Z"
+  namespaces:
+  - openshift-operator-lifecycle-manager

@@ -1,0 +1,85 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  creationTimestamp: "2022-03-13T13:04:34Z"
+  generation: 1
+  labels:
+    operators.coreos.com/ocs-operator.openshift-storage: ""
+  name: ocs-operator
+  namespace: openshift-storage
+  resourceVersion: "6613966"
+  selfLink: /apis/operators.coreos.com/v1alpha1/namespaces/openshift-storage/subscriptions/ocs-operator
+  uid: 9ccd8c6a-2330-4850-8581-8037bdff0e1e
+spec:
+  channel: stable-4.6
+  installPlanApproval: Manual
+  name: ocs-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: ocs-operator.v4.6.10
+status:
+  catalogHealth:
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: certified-operators
+      namespace: openshift-marketplace
+      resourceVersion: "2867573"
+      uid: 3f188062-f1e7-4eda-94cb-1cb4fbdc4997
+    healthy: true
+    lastUpdated: "2022-03-13T13:04:49Z"
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: community-operators
+      namespace: openshift-marketplace
+      resourceVersion: "2867450"
+      uid: 51badd37-8b28-4241-8293-0494024d5917
+    healthy: true
+    lastUpdated: "2022-03-13T13:04:49Z"
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: redhat-marketplace
+      namespace: openshift-marketplace
+      resourceVersion: "2867443"
+      uid: 5ad2cca3-da02-4d0e-bcea-ff0d67261795
+    healthy: true
+    lastUpdated: "2022-03-13T13:04:49Z"
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: redhat-operators
+      namespace: openshift-marketplace
+      resourceVersion: "2867967"
+      uid: cd6f0214-af74-478a-98f2-b684c32c629b
+    healthy: true
+    lastUpdated: "2022-03-13T13:04:49Z"
+  conditions:
+  - lastTransitionTime: "2022-03-13T13:04:49Z"
+    message: all available catalogsources are healthy
+    reason: AllCatalogSourcesHealthy
+    status: "False"
+    type: CatalogSourcesUnhealthy
+  - lastTransitionTime: "2022-03-22T17:34:09Z"
+    reason: RequiresApproval
+    status: "True"
+    type: InstallPlanPending
+  currentCSV: ocs-operator.v4.6.11
+  installPlanGeneration: 2
+  installPlanRef:
+    apiVersion: operators.coreos.com/v1alpha1
+    kind: InstallPlan
+    name: install-qq2fk
+    namespace: openshift-storage
+    resourceVersion: "6613963"
+    uid: 88a2d5ba-9590-4fb1-9684-5702f11a3824
+  installedCSV: ocs-operator.v4.6.10
+  installplan:
+    apiVersion: operators.coreos.com/v1alpha1
+    kind: InstallPlan
+    name: install-qq2fk
+    uuid: 88a2d5ba-9590-4fb1-9684-5702f11a3824
+  lastUpdated: "2022-03-22T17:34:09Z"
+  state: UpgradePending

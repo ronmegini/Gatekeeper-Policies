@@ -1,0 +1,79 @@
+apiVersion: v1
+items:
+- apiVersion: admissionregistration.k8s.io/v1
+  kind: ValidatingWebhookConfiguration
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"admissionregistration.k8s.io/v1","kind":"ValidatingWebhookConfiguration","metadata":{"annotations":{},"labels":{"gatekeeper.sh/system":"yes"},"name":"gatekeeper-validating-webhook-configuration"},"webhooks":[{"admissionReviewVersions":["v1","v1beta1"],"clientConfig":{"service":{"name":"gatekeeper-webhook-service","namespace":"gatekeeper-system","path":"/v1/admit"}},"failurePolicy":"Ignore","matchPolicy":"Exact","name":"validation.gatekeeper.sh","namespaceSelector":{"matchExpressions":[{"key":"admission.gatekeeper.sh/ignore","operator":"DoesNotExist"}]},"rules":[{"apiGroups":["*"],"apiVersions":["*"],"operations":["CREATE","UPDATE"],"resources":["*"]}],"sideEffects":"None","timeoutSeconds":3},{"admissionReviewVersions":["v1","v1beta1"],"clientConfig":{"service":{"name":"gatekeeper-webhook-service","namespace":"gatekeeper-system","path":"/v1/admitlabel"}},"failurePolicy":"Fail","matchPolicy":"Exact","name":"check-ignore-label.gatekeeper.sh","rules":[{"apiGroups":[""],"apiVersions":["*"],"operations":["CREATE","UPDATE"],"resources":["namespaces"]}],"sideEffects":"None","timeoutSeconds":3}]}
+    creationTimestamp: "2021-12-29T20:03:49Z"
+    generation: 2
+    labels:
+      gatekeeper.sh/system: "yes"
+    name: gatekeeper-validating-webhook-configuration
+    resourceVersion: "405420"
+    uid: de3a128e-2c16-410e-9cf1-81fd1f7592a4
+  webhooks:
+  - admissionReviewVersions:
+    - v1
+    - v1beta1
+    clientConfig:
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREF0TVJNd0VRWURWUVFLRXdwbllYUmwKYTJWbGNHVnlNUll3RkFZRFZRUURFdzFuWVhSbGEyVmxjR1Z5TFdOaE1CNFhEVEl4TVRJeU9URTVNRFF3TlZvWApEVE14TVRJeU56SXdNRFF3TlZvd0xURVRNQkVHQTFVRUNoTUtaMkYwWld0bFpYQmxjakVXTUJRR0ExVUVBeE1OCloyRjBaV3RsWlhCbGNpMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFLei8KRkM2K0lkRHBDbk9CeFQrcXNHWjRmTVZQSUpsS2RYR2NZQmt5c0RwR1A3NXRvbzZYeUNPei8xSE4vVHNHNGRncgpEejY0UXRnazFVSmFVN3VwNENUeEw1aVR1cnpmaVRXTnVPbGU5cHhVeW1PUzdXYTdpUmk2SmxuaVl3cUJ5V0xhCjlieG5tY2NVbkZoSzluNk81bzl1Zy9jWFZ1SzM1cVFIOFRzTmlwZ2xEbTFEL0ltb2VwamdPZG9RamR1WlM5aHoKMjhONmRwOTNCRFRzODl4QXJoNVdzdjZGa3VOeEhENStueGxleXdxZjQ1cjQ0TjBDeFZudDhMVFRZaTl4SzcybQpycHBkZU1XOXJyMHpCRHRaL1JTUjJ4WXQ4Q3RML1Z0SGFlVk40YmRCVnd0VWdzRHlVaDdyaXFIRjRwYTdVcDZICjdyZXlpdHRpL0pJSW85V25qYTBDQXdFQUFhTmNNRm93RGdZRFZSMFBBUUgvQkFRREFnS2tNQThHQTFVZEV3RUIKL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkxxUXJ1Rk1JRWVEaTR5SnlkSldhc1JSd0NlU01CZ0dBMVVkRVFRUgpNQStDRFdkaGRHVnJaV1Z3WlhJdFkyRXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRXIwS2xyTnFFMitIR0xsCjBuSGhtaHVObm1RQURkTk9kMGFORjRYWERRenpQMWJkOHhMVTd0MUtTeXdSY0VsUDViSVcrKyticHJ3QSthUk0KVy8ybUtWOWU0WTZ4ak9XRHpOSDVoWXJLdjJpTG1FTlRlWnVTOXZOaXdTODhtNVFuTHQ3YkVsTUhRU3ZscFZWVgpWbS9FUjZMYjNtUjlNaWZlVjVaK3FNWHhQR3M4SVgwRTNwTVhEMTRienF3R1lTNk5zY3hYZVhDb2lvOHpWNzljCkwzSWkvUXdXYlQrdkg0MGxUVlZuS0xZZWR3S2ljaFJHc3RUSmIvaDNmUmx2VEJtaWZwbDhOb2JNK0dJRFpGSnYKclJmTjVXem5vRHFkbWZ2dWFFRDFwc1lRN3htYSszLzlZeVIwTlA1SFYwdzd5d01VY1VwWDZtN2I3NjhFRkl0egpzM1ZIV1hjPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+      service:
+        name: gatekeeper-webhook-service
+        namespace: gatekeeper-system
+        path: /v1/admit
+        port: 443
+    failurePolicy: Ignore
+    matchPolicy: Exact
+    name: validation.gatekeeper.sh
+    namespaceSelector:
+      matchExpressions:
+      - key: admission.gatekeeper.sh/ignore
+        operator: DoesNotExist
+    objectSelector: {}
+    rules:
+    - apiGroups:
+      - '*'
+      apiVersions:
+      - '*'
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - '*'
+      scope: '*'
+    sideEffects: None
+    timeoutSeconds: 3
+  - admissionReviewVersions:
+    - v1
+    - v1beta1
+    clientConfig:
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREF0TVJNd0VRWURWUVFLRXdwbllYUmwKYTJWbGNHVnlNUll3RkFZRFZRUURFdzFuWVhSbGEyVmxjR1Z5TFdOaE1CNFhEVEl4TVRJeU9URTVNRFF3TlZvWApEVE14TVRJeU56SXdNRFF3TlZvd0xURVRNQkVHQTFVRUNoTUtaMkYwWld0bFpYQmxjakVXTUJRR0ExVUVBeE1OCloyRjBaV3RsWlhCbGNpMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFLei8KRkM2K0lkRHBDbk9CeFQrcXNHWjRmTVZQSUpsS2RYR2NZQmt5c0RwR1A3NXRvbzZYeUNPei8xSE4vVHNHNGRncgpEejY0UXRnazFVSmFVN3VwNENUeEw1aVR1cnpmaVRXTnVPbGU5cHhVeW1PUzdXYTdpUmk2SmxuaVl3cUJ5V0xhCjlieG5tY2NVbkZoSzluNk81bzl1Zy9jWFZ1SzM1cVFIOFRzTmlwZ2xEbTFEL0ltb2VwamdPZG9RamR1WlM5aHoKMjhONmRwOTNCRFRzODl4QXJoNVdzdjZGa3VOeEhENStueGxleXdxZjQ1cjQ0TjBDeFZudDhMVFRZaTl4SzcybQpycHBkZU1XOXJyMHpCRHRaL1JTUjJ4WXQ4Q3RML1Z0SGFlVk40YmRCVnd0VWdzRHlVaDdyaXFIRjRwYTdVcDZICjdyZXlpdHRpL0pJSW85V25qYTBDQXdFQUFhTmNNRm93RGdZRFZSMFBBUUgvQkFRREFnS2tNQThHQTFVZEV3RUIKL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkxxUXJ1Rk1JRWVEaTR5SnlkSldhc1JSd0NlU01CZ0dBMVVkRVFRUgpNQStDRFdkaGRHVnJaV1Z3WlhJdFkyRXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRXIwS2xyTnFFMitIR0xsCjBuSGhtaHVObm1RQURkTk9kMGFORjRYWERRenpQMWJkOHhMVTd0MUtTeXdSY0VsUDViSVcrKyticHJ3QSthUk0KVy8ybUtWOWU0WTZ4ak9XRHpOSDVoWXJLdjJpTG1FTlRlWnVTOXZOaXdTODhtNVFuTHQ3YkVsTUhRU3ZscFZWVgpWbS9FUjZMYjNtUjlNaWZlVjVaK3FNWHhQR3M4SVgwRTNwTVhEMTRienF3R1lTNk5zY3hYZVhDb2lvOHpWNzljCkwzSWkvUXdXYlQrdkg0MGxUVlZuS0xZZWR3S2ljaFJHc3RUSmIvaDNmUmx2VEJtaWZwbDhOb2JNK0dJRFpGSnYKclJmTjVXem5vRHFkbWZ2dWFFRDFwc1lRN3htYSszLzlZeVIwTlA1SFYwdzd5d01VY1VwWDZtN2I3NjhFRkl0egpzM1ZIV1hjPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+      service:
+        name: gatekeeper-webhook-service
+        namespace: gatekeeper-system
+        path: /v1/admitlabel
+        port: 443
+    failurePolicy: Fail
+    matchPolicy: Exact
+    name: check-ignore-label.gatekeeper.sh
+    namespaceSelector: {}
+    objectSelector: {}
+    rules:
+    - apiGroups:
+      - ""
+      apiVersions:
+      - '*'
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - namespaces
+      scope: '*'
+    sideEffects: None
+    timeoutSeconds: 3
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
